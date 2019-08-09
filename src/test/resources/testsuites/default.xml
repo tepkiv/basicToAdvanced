@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="diamond-dummy" verbose="1" preserve-order="true" parallel="tests" thread-count="1024">
+
+
+    <test name="diamond" preserve-order="true" parallel="none">
+        <classes>
+
+        </classes>
+    </test>
+</suite>
