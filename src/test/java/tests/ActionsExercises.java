@@ -93,6 +93,11 @@ public class ActionsExercises extends BaseTest {
         autoSuggestiveField(bengaluru_internation_aiport);
     }
 
+    @Test
+    public void takeScreenshot() throws InterruptedException {
+
+    }
+
     private void autoSuggestiveField(String value) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
