@@ -1,6 +1,6 @@
 package tests;
 
-import Enums.TestProperties;
+import enums.TestProperties;
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

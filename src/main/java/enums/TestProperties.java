@@ -1,4 +1,4 @@
-package Enums;
+package enums;
 
 public enum TestProperties {
     GECKO_DRIVER("webdriver.gecko.driver"),
