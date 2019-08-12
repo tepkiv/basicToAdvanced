@@ -11,15 +11,15 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    public String baseUrl;
-    private Properties properties;
-    private WebDriver driver;
+    public static String baseUrl;
+    private static Properties properties;
+    private static WebDriver driver;
 
     public ApplicationManager(Properties properties) {
         this.properties = properties;
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         String browser = properties.getProperty("browser");
         if (driver == null) {
             switch (browser) {

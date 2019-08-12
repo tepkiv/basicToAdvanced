@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+import util.ScreenShotManager;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,7 +33,7 @@ public class ActionsExercises extends BaseTest {
         URL url = new URL("http://jqueryui.com/droppable/");
         Actions actions = new Actions(driver);
 
-        driver.get(url.toString());
+        open(url.toString());
 
         driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
         WebElement droppable = driver.findElement(By.id("droppable"));
@@ -47,7 +48,7 @@ public class ActionsExercises extends BaseTest {
     public void tabs() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", TestProperties.CHROME_DRIVER.get());
 
-        driver.get("http://qaclickacademy.com/practice.php");
+        open("http://qaclickacademy.com/practice.php");
 
         System.out.println(driver.findElements(By.tagName("a")).size());
 
@@ -82,7 +83,7 @@ public class ActionsExercises extends BaseTest {
     public void dropdown() throws InterruptedException {
         String bengaluru_internation_aiport = "BENGALURU INTERNATION AIPORT";
 
-        driver.get("https://www.ksrtc.in");
+        open("https://www.ksrtc.in");
         driver.findElement(inputLeavingFrom).sendKeys(bengaluru_internation_aiport.substring(0, 4));
         Thread.sleep(2000);
 
@@ -94,8 +95,9 @@ public class ActionsExercises extends BaseTest {
     }
 
     @Test
-    public void takeScreenshot() throws InterruptedException {
-
+    public void takeScreenShot() throws InterruptedException {
+        open("https://www.ksrtc.in");
+        ScreenShotManager.saveScreenShot();
     }
 
     private void autoSuggestiveField(String value) {
