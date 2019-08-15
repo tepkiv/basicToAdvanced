@@ -1,6 +1,6 @@
 package tests;
 
-import enums.TestProperties;
+import conf.TestProperties;
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -46,10 +46,9 @@ public class ActionsExercises extends BaseTest {
 
     @Test
     public void tabs() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", TestProperties.CHROME_DRIVER.get());
+        System.setProperty("webdriver.chrome.driver", TestProperties.CHROME_DRIVER);
 
         open("http://qaclickacademy.com/practice.php");
-
         System.out.println(driver.findElements(By.tagName("a")).size());
 
         WebElement footer = driver.findElement(By.id("gf-BIG"));// Limiting webdriver scope

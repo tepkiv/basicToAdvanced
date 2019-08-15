@@ -1,6 +1,6 @@
 package base;
 
-import enums.TestProperties;
+import conf.TestProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,24 +20,22 @@ public class ApplicationManager {
     }
 
     public static WebDriver getDriver() {
+        LocalDesiredCapabilities localDesiredCapabilities = new LocalDesiredCapabilities();
         String browser = properties.getProperty("browser");
         if (driver == null) {
             switch (browser) {
                 case "ff":
                 case "firefox":
-                    System.setProperty(TestProperties.GECKO_DRIVER.get(), properties.getProperty(TestProperties.GECKO_DRIVER_PATH.get()));
+                    System.setProperty(TestProperties.GECKO_DRIVER, properties.getProperty(TestProperties.GECKO_DRIVER_PATH));
                     driver = new FirefoxDriver();
                     driver.manage().window().maximize();
                     //System.setProperty("webdriver.firefox.marionette", "");
                     break;
                 case "chrome":
                 case "googlechrome":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--start-maximized");
-
-                    File chromeDriver = new File(properties.getProperty(TestProperties.CHROME_DRIVER_PATH.get()));
-                    System.setProperty(TestProperties.CHROME_DRIVER.get(), chromeDriver.getAbsolutePath());
-                    driver = new ChromeDriver(options);
+                    File chromeDriver = new File(properties.getProperty(TestProperties.CHROME_DRIVER_PATH));
+                    System.setProperty(TestProperties.CHROME_DRIVER, chromeDriver.getAbsolutePath());
+                    driver = new ChromeDriver(localDesiredCapabilities.chrome());
                     break;
                 //todo implement
                 case "ie":
@@ -50,17 +48,16 @@ public class ApplicationManager {
                     throw new Error("Unsupported Browser");
             }
 
-            baseUrl = properties.getProperty(TestProperties.BASE_URL.get());
+            assert driver != null;
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            driver.get(baseUrl);
+            driver.get(properties.getProperty(TestProperties.BASE_URL));
             System.out.println(driver.getTitle());
 
         }
         return driver;
     }
 
-    public String getProperty(String key) {
+    public static String getProperty(String key) {
         return properties.getProperty(key);
     }
-
 }

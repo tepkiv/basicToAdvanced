@@ -1,6 +1,6 @@
 package base;
 
-import enums.TestProperties;
+import conf.TestProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -13,18 +13,19 @@ import java.util.Properties;
 public class BaseTest {
     public static WebDriver driver;
     public static Properties properties = new Properties();
+    protected static ApplicationManager app;
 
     @BeforeTest
-    public static void setUp() throws IOException {
+    public void setUp() throws IOException {
         String configFile = System.getProperty("configFile","application.properties");
         properties.load(new FileReader(new File(configFile)));
-        new ApplicationManager(properties);
+        app = new ApplicationManager(properties);
         driver = ApplicationManager.getDriver();
     }
 
     @AfterTest
-    public static void end(){
-        if(properties.getProperty(TestProperties.CI_MODE.get()).equals(true)){
+    public void tearDown(){
+        if(properties.getProperty(TestProperties.CI_MODE).equals(true)){
             driver.close();
         }
     }
@@ -35,10 +36,6 @@ public class BaseTest {
 
     private void open() {
         driver.get("google.com");
-    }
-
-    public void validateHeader(){
-
     }
 
 }
