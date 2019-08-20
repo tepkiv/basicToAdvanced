@@ -14,7 +14,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.function.Function;
 
 public class LocalDesiredCapabilities {
     public ChromeOptions chrome() {

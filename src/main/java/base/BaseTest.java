@@ -17,15 +17,15 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp() throws IOException {
-        String configFile = System.getProperty("configFile","application.properties");
+        String configFile = System.getProperty("config.file","src/test/resources/config/application.properties");
         properties.load(new FileReader(new File(configFile)));
         app = new ApplicationManager(properties);
-        driver = ApplicationManager.getDriver();
+        driver =  ApplicationManager.getDriver();
     }
 
     @AfterTest
     public void tearDown(){
-        if(properties.getProperty(TestProperties.CI_MODE).equals(true)){
+        if(properties.getProperty(TestProperties.CI_MODE).equals("true")){
             driver.close();
         }
     }
