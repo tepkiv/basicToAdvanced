@@ -1,12 +1,13 @@
 package base;
 
 import conf.TestProperties;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -46,6 +47,16 @@ public class ApplicationManager {
                         e.printStackTrace();
                     }*/
                     driver = new ChromeDriver(localDesiredCapabilities.chrome());
+                    break;
+                case "mobileApp":
+                    DesiredCapabilities androidCapabilities = new DesiredCapabilities();
+                    androidCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel2API29");
+                    androidCapabilities.setCapability(MobileCapabilityType.APP, new File("src/test/resources/ApiDemos-debug.apk"));
+                    try {
+                        AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), androidCapabilities);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 //todo implement
                 case "ie":

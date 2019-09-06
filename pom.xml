@@ -19,6 +19,7 @@
         <snakeyaml>1.18</snakeyaml>
         <commonslang3>3.9</commonslang3>
         <log4j>2.12.1</log4j>
+        <ioappium>4.1.2</ioappium>
     </properties>
 
     <build>
@@ -77,6 +78,11 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${log4j}</version>
         </dependency>
+        <!--<dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${ioappium}</version>
+        </dependency>-->
     </dependencies>
 
 </project>
