@@ -3,6 +3,9 @@ package tests;
 import base.LocalDesiredCapabilities;
 import conf.TestProperties;
 import base.BaseTest;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.codehaus.plexus.logging.LoggerManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -16,6 +19,15 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class ActionsExercises extends BaseTest {
+    private static final Logger logger = LogManager.getLogger(ActionsExercises.class);
+
+    @Test
+    public void logging() {
+        logger.info("logging info test");
+        logger.warn("logging warn test");
+        logger.debug("logging debug test");
+        logger.error("logging error test");
+    }
 
     @Test
     public void mouseOver() {
