@@ -26,7 +26,8 @@ public class ActionsExercises extends BaseTest {
         logger.info("logging info test");
         logger.warn("logging warn test");
         logger.debug("logging debug test");
-        logger.error("logging error test");
+        logger.error("logging error test", new NullPointerException("NullError"));
+
     }
 
     @Test
