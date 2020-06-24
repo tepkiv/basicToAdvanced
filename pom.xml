@@ -94,7 +94,11 @@
             <artifactId>java-client</artifactId>
             <version>7.2.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.googlejavaformat</groupId>
+            <artifactId>google-java-format</artifactId>
+            <version>1.8</version>
+        </dependency>
         <!--<dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>

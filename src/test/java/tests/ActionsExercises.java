@@ -22,6 +22,12 @@ public class ActionsExercises extends BaseTest {
     private static final Logger logger = LogManager.getLogger(ActionsExercises.class);
 
     @Test
+    public void threads() throws InterruptedException {
+        open("https://www.ksrtc.in");
+        ScreenShotManager.saveScreenShot();
+    }
+
+    @Test
     public void logging() {
         logger.info("logging info test");
         logger.warn("logging warn test");
